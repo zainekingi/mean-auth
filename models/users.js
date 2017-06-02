@@ -31,7 +31,7 @@ const UserSchema = mongoose.Schema({
     }
 });
 
-// export the user model.
+// export the user schema.
 const User = module.exports = mongoose.model('User', UserSchema);
 
 /* ==================================================
@@ -64,3 +64,17 @@ module.exports.addUser = (newUser, callback) => {
         });
     });
 };
+
+
+// FUNCTION: Compare passwords - compares candidate password with user record.
+module.exports.comparePassword = (candidatePass, hash, callback) => {
+  // Use bCryptJS compare method.
+  bcrypt.compare(candidatePass, hash, (err, isMatch) => {
+
+    // Check for error.
+    if(err) throw err;
+
+    // Return callback.
+    callback(null, isMatch);
+  });
+}

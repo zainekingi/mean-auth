@@ -49,6 +49,16 @@ module.exports.getUserByUsername = (username, callback) => {
     User.findOne(query, callback);
 };
 
+// FUNCTION: Compare user input password with database.
+module.exports.comparePassword = (candidatePassword, hash, callback) => {
+    // use bcrypt compare method to compare the password with the saved hash.
+    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        // check for error.
+        if(err) throw err;
+        callback(null, isMatch);
+    });
+};
+
 // FUNCTION: Add new user.
 module.exports.addUser = (newUser, callback) => {
     // Hash the password.

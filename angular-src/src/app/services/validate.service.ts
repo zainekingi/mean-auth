@@ -20,4 +20,13 @@ export class ValidateService {
     return regEx.test(email);
   }
 
+  validateLogin(user) {
+    // Check if fields are empty.
+    if(user.username == undefined || user.password == undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }

@@ -28,6 +28,8 @@ export class NavbarComponent implements OnInit {
 
     // redirect user to login page.
     this.router.navigate(['/login']);
+
+    return false;
   }
 
 }

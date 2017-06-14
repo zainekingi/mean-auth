@@ -70,7 +70,11 @@ app.get('/', (req, res) => {
 // ------------------------------------
 
 // create the port variable.
-const port = 3000;
+const port = process.env.PORT || 8080; // Heroku port setting.
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 // configure the app port.
 app.listen(port, () => { console.log('Server running on PORT ' + port );});

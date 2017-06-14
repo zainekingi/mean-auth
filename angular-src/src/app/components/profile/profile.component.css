@@ -1,0 +1,9 @@
+.namSpan {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.info-label {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
